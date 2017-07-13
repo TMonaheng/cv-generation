@@ -1,0 +1,1045 @@
+﻿
+@model CV_Generator.Models.CV_ViewModel
+
+
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <link href="~/Content/themes/base/core.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />   
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    @*<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>*@
+    
+
+    
+    <script type="text/javascript">
+        
+        $(document).scroll(function () {
+
+            localStorage['page'] = document.URL;
+
+            localStorage['scrollTop'] = $(document).scrollTop();
+            //sessionStorage.ad
+        });
+
+
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                dateFormat: "dd/M/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-30:+10"
+            });
+
+
+            if (localStorage['page'].replace('Index', '').replace('SaveData', '') == document.URL.replace('Index', '').replace('SaveData', '')) {
+
+                $(document).scrollTop(localStorage['scrollTop']);
+            }
+
+
+        });
+        function hideOnLoad() {
+            $('#permanentDiv').hide();
+            $('#contractDiv').hide();
+        }
+
+        $value = $GET['query'];
+        $formfield = $GET['field'];
+
+        if()
+
+        $(document).ready(function () {
+            hideOnLoad(); // add this line
+            $('#EmploymentTypeDrop').change(function () {
+                var value = $(this).val();
+                if (value == 'Permanent') {
+                    $('#permanentDiv').show();
+                    $('#contractDiv').hide();
+
+                    document.getElementById("contractInput1").value = 0;
+                    document.getElementById("contractInput2").value = 0;
+
+
+
+                } else if (value == 'Contract') {
+                    $('#permanentDiv').hide();
+                    $('#contractDiv').show();
+
+                    document.getElementById("permanentInput1").value = 0;
+                    document.getElementById("permanentInput2").value = 0;
+                    document.getElementById("permanentInput3").value = 0;
+                    document.getElementById("permanentInput4").value = 0;
+                    document.getElementById("permanentInput5").value = 0;
+                    document.getElementById("permanentInput6").value = 0;
+
+                }
+                else {
+                    hideOnLoad();
+                }
+            });
+        });
+
+        $(function () {
+
+            $('#submitButton').click(function (e) {
+                $(':text, textarea, select, email, datetime, number').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            $('#strengthButton').click(function (e) {
+                $('#strengthInput').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            $('#achievementButton').click(function (e) {
+                $('#achievementInput').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            $('#skillButton').click(function (e) {
+                $('#skillInput1').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#skillInput2').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#skillInput3').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#skillInput4').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            $('#languageButton').click(function (e) {
+                $('#languageInput1').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#languageInput2').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#languageInput3').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#languageInput4').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            $('#qualificationButton').click(function (e) {
+                $('#qualificationInput1').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#qualificationInput2').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#qualificationInput3').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            $('#workSummaryButton').click(function (e) {
+                $('#workSummaryInput1').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#workSummaryInput2').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#workSummaryInput3').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#workSummaryInput4').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#workSummaryInput5').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            $('#company1Button').click(function (e) {
+                $('#company1Input1').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#company1Input2').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#company1Input3').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#company1Input4').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#company1Input5').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#company1Input6').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            $('#company2Button').click(function (e) {
+                $('#company2Input1').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#company2Input2').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#company2Input3').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#company2Input4').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+
+                    }
+                });
+                $('#company2Input5').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#company2Input6').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            $('#referenceButton').click(function (e) {
+                $('#referenceInput1').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#referenceInput2').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#referenceInput3').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+                $('#referenceInput4').each(function () {
+                    if ($(this).val().length == 0) {
+                        $(this).css('border', '2px solid red');
+                        $(this).attr("placeholder", "Required field");
+                        e.preventDefault();
+                    }
+                });
+            });
+
+        });
+
+    </script>
+
+}
+
+
+
+@{
+    //Layout = null;
+    ViewBag.Title = "Profile Capture";
+}
+
+<body style="font-family:Poppins">
+    <h1>Profile Capture</h1>
+    <h2>Capture a new Profile</h2>
+
+    <hr />
+    @using (Html.BeginForm("SaveData", "CV_Generator", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+    
+        <div class="row col-md-offset-1">
+            <div class="form-group">
+                <h4>Basic Information</h4>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FirstName, new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.FirstName, new { @class = " form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.LastName, new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.IDNumber, new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.IDNumber, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PhoneNumber, new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CountryOfBirth, new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.CountryOfBirth, new { @class = "form-control " })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.BEEStatus, new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.BEEStatus, new { @class = "form-control" })
+            </div>
+
+
+            @{
+                List<SelectListItem> GenderSelector = new List<SelectListItem>();
+
+                GenderSelector.Add(new SelectListItem
+                {
+                    Text = "Male",
+                    Value = "Male"
+                });
+                GenderSelector.Add(new SelectListItem
+                {
+                    Text = "Female",
+                    Value = "Female"
+                });
+            }
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gender, new { @class = "control-label h5" })
+                @Html.DropDownListFor(m => m.Gender, GenderSelector, "-- Select --", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProfileStatement, new { @class = "control-label h5" })
+                @Html.TextAreaFor(m => m.ProfileStatement, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row col-md-offset-1">
+            <div class="form-group">
+                <h4>Key Strengths and Achievements</h4>
+            </div>
+            <div class="form-group">
+                @Html.Label("Strength: Add one at a time", new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.SingleStrength.Description, new { @class = "form-control", @id = "strengthInput" })
+               
+                <input onclick="" id="strengthButton" type="submit" class="btn btn-primary" value="Add Strength to List" name="ButtonName" style="margin-top:15px;" />
+            </div>
+            <div class="form-group">
+                <ul>
+                    @if (Model.StrengthList != null)
+                    {
+                        foreach (var item in Model.StrengthList)
+                        {
+                            <li style="margin-top:10px;"><strong> @item.Description</strong></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="row col-md-offset-1">
+            <div class="form-group">
+                @Html.Label("Achievement: Add one at a time", new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.SingleAchievement.Description, new { @class = "form-control", @id = "achievementInput" })
+
+                <input id="achievementButton" onclick="" type="submit" class="btn btn-primary col-md-offset-1" value="Add Achievement to List" name="ButtonName" style="margin-top:15px;" />
+            </div>
+            <div class="form-group">
+                <ul>
+                    @if (Model.AchievementList != null)
+                {
+                    foreach (var item in Model.AchievementList)
+                    {
+                            <li style="margin-top:5px; "><strong>@item.Description</strong></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <hr />
+        <div class="row col-md-offset-1">
+            <div class="form-group">
+                <h4>IT/Software and Other Skills Matrix</h4>
+                <p style="color:red"><strong> Do not include old technologies no longer used</strong></p>
+            </div>
+            <div class="form-group">
+                <table class="table table-striped table-bordered" style="margin-bottom:20px; padding:10px; width:52%;font-weight:700;">
+                    <tr>
+                        <td style="font-size:18px; border:none; width:200px;">Proficiency Ratings</td>
+                        <td style="font-size:18px; border:none;"></td>
+                    </tr>
+                    <tr>
+                        <td>4 = Highly skilled</td>
+                        <td>Highly skilled ‘expert’ who can train others.</td>
+                    </tr>
+                    <tr>
+                        <td>3 = Skilled</td>
+                        <td>Competent with sound skills.  Does not need assistance.</td>
+                    </tr>
+                    <tr>
+                        <td>2 = Partially skilled</td>
+                        <td>Some gaps in skills and requires assistance.</td>
+                    </tr>
+                    <tr>
+                        <td>1 = Not skilled</td>
+                        <td>Skills gap and cannot perform work.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row col-md-offset-1">
+            <div class="form-group">
+                @Html.Label("Technology/Tool/Method", new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.SingleSkill.SkillType, new { @class = "form-control", @id = "skillInput1" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Years of Experience", new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.SingleSkill.YearsOfExperience, new { @class = "form-control", @id = "skillInput2" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Last Year Used:", new { @class = "control-label h5" })
+                @Html.EditorFor(m => m.SingleSkill.LastYearUsed, new { htmlAttributes = new { @class = "form-control", placeholder = "Last year used", @readonly = "true", @id = "skillInput3" } })
+            </div>
+
+            @{
+                List<SelectListItem> ProficiencyRatings = new List<SelectListItem>();
+
+                ProficiencyRatings.Add(new SelectListItem
+                {
+                    Text = "1",
+                    Value = "1"
+                });
+                ProficiencyRatings.Add(new SelectListItem
+                {
+                    Text = "2",
+                    Value = "2"
+                });
+                ProficiencyRatings.Add(new SelectListItem
+                {
+                    Text = "3",
+                    Value = "3"
+                });
+                ProficiencyRatings.Add(new SelectListItem
+                {
+                    Text = "4",
+                    Value = "4"
+                });
+            }
+
+            <div class="form-group">
+                @Html.Label("Proficiency rating", new { @class = "control-label h5" })
+                @Html.DropDownListFor(m => m.SingleSkill.ProficiencyRating, ProficiencyRatings, "-- Select --", new { @id = "skillInput4", @class = "form-control" })
+
+                <input id="skillButton" onclick="" type="submit" class="btn btn-primary" value="Add Skill to List" name="ButtonName" style="margin-top:15px;" />
+            </div>
+            <div class="form-group">
+                <table class="table table-bordered table-striped" style="width:65%;">
+
+                    <thead>
+                        <tr>
+                            <th>Technology/Tool/Method</th>
+                            <th>Years of Experience</th>
+                            <th>Last Year Used</th>
+                            <th>Proficiency Rating</th>
+                        </tr>
+                    </thead>
+
+                    @if (Model.SkillList != null)
+                {
+                    foreach (var item in Model.SkillList)
+                    {
+                            <tr>
+                                <td>@item.SkillType</td>
+                                <td>@item.YearsOfExperience</td>
+                                <td>@item.LastYearUsed.Value.ToShortDateString()</td>
+                                <td>@item.ProficiencyRating</td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row col-md-offset-1">
+            <div class="form-group">
+                <h4>Languages</h4>
+            </div>
+            <div class="form-group">
+                @Html.Label("Language", new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.SingleLanguage.LanguageName, new { @class = "form-control", @id = "languageInput1" })
+            </div>
+
+            @{
+                List<SelectListItem> LanguageProficiency = new List<SelectListItem>();
+
+                LanguageProficiency.Add(new SelectListItem
+                {
+                    Text = "Excelent",
+                    Value = "Excelent"
+                });
+                LanguageProficiency.Add(new SelectListItem
+                {
+                    Text = "Good",
+                    Value = "Good"
+                });
+                LanguageProficiency.Add(new SelectListItem
+                {
+                    Text = "Fair",
+                    Value = "Fair"
+                });
+
+            }
+
+            <div class="form-group">
+                @Html.Label("Speak", new { @class = "control-label h5" })
+                @Html.DropDownListFor(m => m.SingleLanguage.SpeakProficiency, LanguageProficiency, "-- Select --", new { @id = "languageInput2", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Read", new { @class = "control-label h5" })
+                @Html.DropDownListFor(m => m.SingleLanguage.ReadProficiency, LanguageProficiency, "-- Select --", new { @id = "languageInput3", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Write", new { @class = "control-label h5" })
+                @Html.DropDownListFor(m => m.SingleLanguage.WriteProficiency, LanguageProficiency, "-- Select --", new { @id = "languageInput4", @class = "form-control" })
+
+                <input id="languageButton" onclick="" type="submit" class="btn btn-primary" value="Add Language to List" name="ButtonName" style="margin-top:15px;" />
+            </div>
+            <div class="form-group">
+                <table class="table table-bordered table-striped" style="width:40%;">
+                    <thead>
+                        <tr>
+                            <th>Language</th>
+                            <th>Speak</th>
+                            <th>Read</th>
+                            <th>Write</th>
+                        </tr>
+                    </thead>
+
+                    @if (Model.LanguageList != null)
+                {
+                    foreach (var item in Model.LanguageList)
+                    {
+                            <tr>
+                                <td>@item.LanguageName</td>
+                                <td>@item.SpeakProficiency</td>
+                                <td>@item.ReadProficiency</td>
+                                <td>@item.WriteProficiency</td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row col-md-offset-1">
+            <div class="form-group">
+                <h3>Academic Qualifications and Courses Attended</h3>
+                <h4 style="color:red;">(Most recent first)</h4>
+            </div>
+            <div class="form-group">
+                @Html.Label("Qualification", new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.SingleQualification.QualificationName, new { @class = "form-control", @id = "qualificationInput1" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Institution", new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.SingleQualification.Institution, new { @class = "form-control", @id = "qualificationInput2" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Year Completed", new { @class = "control-label h5" })
+                @Html.EditorFor(m => m.SingleQualification.YearCompleted, new { htmlAttributes = new { @class = "form-control", placeholder = "Year Completed", @readonly = "true", @id = "qualificationInput3" } })
+
+                <input id="qualificationButton" onclick="" type="submit" class="btn btn-primary" value="Add Qualification to List" name="ButtonName" style="margin-top:15px;" />
+            </div>
+            <div class="form-group">
+                <table class="table table-bordered table-striped" style="width:50%;">
+                    <thead>
+                        <tr>
+                            <th>Qualification</th>
+                            <th>Institution</th>
+                            <th>Year Completed</th>
+                        </tr>
+                    </thead>
+
+                    @if (Model.QualificationList != null)
+                {
+                    foreach (var item in Model.QualificationList)
+                    {
+                            <tr>
+                                <td>@item.QualificationName</td>
+                                <td>@item.Institution</td>
+                                <td>@item.YearCompleted.Value.ToShortDateString()</td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row col-md-offset-1">
+            <div class="form-group">
+                <h3>Work Experience: Summary</h3>
+                <h4 style="color:red;">(Most recent first)</h4>
+            </div>
+            <div class="form-group">
+                @Html.Label("Company Name", new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.SingleWorkExperience_Summary.Company, new { @class = "form-control", @id = "workSummaryInput1" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Role", new { @class = "control-label h5" })
+                @Html.TextBoxFor(m => m.SingleWorkExperience_Summary.Role, new { @class = "form-control", @id = "workSummaryInput2" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Date: From", new { @class = "control-label h5" })
+                @Html.EditorFor(m => m.SingleWorkExperience_Summary.StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Start Date", @readonly = "true", @id = "workSummaryInput3" } })
+            </div>
+            <div class="form-group">
+                @Html.Label("Date: Until", new { @class = "control-label h5" })
+                @Html.EditorFor(m => m.SingleWorkExperience_Summary.EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "End Date", @readonly = "true", @id = "workSummaryInput4" } })
+            </div>
+            @{
+                List<SelectListItem> EmploymentTypeSelector = new List<SelectListItem>();
+
+                EmploymentTypeSelector.Add(new SelectListItem
+                {
+                    Text = "Permanent",
+                    Value = "Permanent"
+                });
+                EmploymentTypeSelector.Add(new SelectListItem
+                {
+                    Text = "Contract",
+                    Value = "Contract"
+                });
+
+            }
+
+            <div class="form-group">
+                @Html.Label("Permanent/Contract", new { @class = "control-label h5" })
+                @Html.DropDownListFor(m => m.SingleWorkExperience_Summary.EmploymentType, EmploymentTypeSelector, "-- Select --", new { @id = "workSummaryInput5", @class = "form-control" })
+
+                <input id="workSummaryButton" onclick="" type="submit" class="btn btn-primary" value="Add Summary to List" name="ButtonName" style="margin-top:15px;" />
+            </div>
+            <div class="form-group">
+                <table class="table table-bordered table-striped" style="width:60%;">
+                    <thead>
+                        <tr>
+                            <th>Company Name</th>
+                            <th>Role</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Permanent/Contract</th>
+                        </tr>
+                    </thead>
+
+                    @if (Model.WorkExperience_SummaryList != null)
+                {
+                    foreach (var item in Model.WorkExperience_SummaryList)
+                    {
+                            <tr>
+                                <td>@item.Company</td>
+                                <td>@item.Role</td>
+                                <td>@item.StartDate.Value.ToShortDateString()</td>
+                                <td>@item.EndDate.Value.ToShortDateString()</td>
+                                <td>@item.EmploymentType</td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row col-md-offset-1">
+            <div class="form-group">
+                <h3>Work Experience: Detailed(Recent)</h3>
+                <h4 style="color:red;">(Last two places only - recent first)</h4>
+            </div>
+            <div class="col-md-4" style="margin-right:100px;">
+                <div class="form-group">
+                    <h4>First Company</h4>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Company", new { @class = "control-label h5" })
+                    @Html.TextBoxFor(m => m.CompanyOne.Company, new { @class = "form-control", @id = "company1Input1" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Role/Title", new { @class = "control-label h5" })
+                    @Html.TextBoxFor(m => m.CompanyOne.Role, new { @class = "form-control", @id = "company1Input2" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Date: From", new { @class = "control-label h5" })
+                    @Html.EditorFor(m => m.CompanyOne.StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Start Date", @readonly = "true", @id = "company1Input3" } })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Date: Until", new { @class = "control-label h5" })
+                    @Html.EditorFor(m => m.CompanyOne.EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "End Date", @readonly = "true", @id = "company1Input4" } })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Reason for Leaving", new { @class = "control-label h5" })
+                    @Html.TextBoxFor(m => m.CompanyOne.ReasonForLeaving, new { @class = "form-control", @id = "company1Input5" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Responsibilities", new { @class = "control-label h5" })
+                    @Html.TextBoxFor(m => m.Comp1SingleResponsibility.Description, new { @class = "form-control", @id = "company1Input6" })
+
+                    <input id="company1Button" onclick="" type="submit" class="btn btn-primary" value="Add CO.1 Responsibility to List" name="ButtonName" style="margin-top:15px;" />
+                </div>
+                <div class="form-group">
+                    <ul>
+                        @if (Model.Comp1ResponsibilityList != null)
+                        {
+                            foreach (var item in Model.Comp1ResponsibilityList)
+                            {
+                                <li style="margin-top:10px;">@item.Description</li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <h4>Second Company</h4>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Company", new { @class = "control-label h5" })
+                    @Html.TextBoxFor(m => m.CompanyTwo.Company, new { @class = "form-control", @id = "company2Input1" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Role/Title", new { @class = "control-label h5" })
+                    @Html.TextBoxFor(m => m.CompanyTwo.Role, new { @class = "form-control", @id = "company2Input2" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Date: From", new { @class = "control-label h5" })
+                    @Html.EditorFor(m => m.CompanyTwo.StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Start Date", @readonly = "true", @id = "company2Input3" } })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Date: Until", new { @class = "control-label h5" })
+                    @Html.EditorFor(m => m.CompanyTwo.EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "End Date", @readonly = "true", @id = "company2Input4" } })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Reason for Leaving", new { @class = "control-label h5" })
+                    @Html.TextBoxFor(m => m.CompanyTwo.ReasonForLeaving, new { @class = "form-control", @id = "company2Input5" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Responsibilities", new { @class = "control-label h5" })
+                    @Html.TextBoxFor(m => m.Comp2SingleResponsibility.Description, new { @class = "form-control", @id = "company2Input6" })
+
+                    <input id="company2Button" onclick="" type="submit" class="btn btn-primary" value="Add CO.2 Responsibility to List" name="ButtonName" style="margin-top:15px;" />
+                </div>
+                <div class="form-group">
+                    <ul>
+                        @if (Model.Comp2ResponsibilityList != null)
+                        {
+                            foreach (var item in Model.Comp2ResponsibilityList)
+                            {
+                                <li style="margin-top:10px;">@item.Description</li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+                List<SelectListItem> HideEmploymentType = new List<SelectListItem>();
+
+                HideEmploymentType.Add(new SelectListItem
+                {
+                    Text = "Permanent",
+                    Value = "Permanent"
+                });
+                HideEmploymentType.Add(new SelectListItem
+                {
+                    Text = "Contract",
+                    Value = "Contract"
+                });
+
+                <hr />
+
+                <div class="row col-md-offset-1">
+                    <div class="form-group">
+                        <h3>Preferred Employement Type</h3>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Select Employment Type", new { @class = "control-label h5" })
+                        @Html.DropDownList("EmploymentType", HideEmploymentType, "-- Select -- ", new { id = "EmploymentTypeDrop", @class = "form-control" })
+                    </div>
+                </div>
+                <div id="permanentDiv" class="row col-md-offset-1">
+                    <div class="form-group">
+                        <h4>Permanent</h4>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Current Basic Salary: Monthly", new { @class = "control-label h4" })
+                        @Html.TextBoxFor(m => m.PermanentPosition.CurrentSalary, new { @class = "form-control", @id = "permanentInput1", @type = "number" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Current Bonus/Bonuses: Monthly", new { @class = "control-label h4" })
+                        @Html.TextBoxFor(m => m.PermanentPosition.CurrentBonus, new { @class = "form-control", @id = "permanentInput2" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Current Incentives: Monthly", new { @class = "control-label h4" })
+                        @Html.TextBoxFor(m => m.PermanentPosition.CurrentIncentives, new { @class = "form-control", @id = "permanentInput3" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Required Basic Salary: Monthly", new { @class = "control-label h4" })
+                        @Html.TextBoxFor(m => m.PermanentPosition.RequiredSalary, new { @class = "form-control", @id = "permanentInput4" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Required Bonus/Bonuses: Monthly", new { @class = "control-label h4" })
+                        @Html.TextBoxFor(m => m.PermanentPosition.RequiredBonus, new { @class = "form-control", @id = "permanentInput5" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Required Incentives: Monthly", new { @class = "control-label h4" })
+                        @Html.TextBoxFor(m => m.PermanentPosition.RequiredIncentives, new { @class = "form-control", @id = "permanentInput6" })
+                    </div>
+                </div>
+
+                <div id="contractDiv" class="row col-md-offset-1">
+                    <div class="form-group">
+                        <h4>Contract</h4>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Current Hourly Rate", new { @class = "control-label h4" })
+                        @Html.TextBoxFor(m => m.ContractPosition.CurrentHourlyRate, new { @class = "form-control", @id = "contractInput1" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Required Hourly Rate", new { @class = "control-label h4" })
+                        @Html.TextBoxFor(m => m.ContractPosition.RequiredHourlyRate, new { @class = "form-control", @id = "contractInput2" })
+                    </div>
+                </div>
+
+                <hr style="color:red;" />
+
+                <div class="row col-md-offset-1">
+                    <div class="form-group">
+                        <h3 style="color:red;">Additional Required Information</h3>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("When will you be able to commence work?", new { @class = "control-label h5" })
+                        @Html.TextBoxFor(m => m.CommencementAvailability, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Do you have any leave planned for this year?", new { @class = "control-label h5" })
+                        @Html.TextBoxFor(m => m.LeavePlanned, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("If yes, please provide dates", new { @class = "control-label h5" })
+                        @Html.EditorFor(m => m.LeavePlannedDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Select a date", @readonly = "true" } })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Disclosures (share options/restraint of trade/restrictions, etc)", new { @class = "control-label h5" })
+                        @Html.TextAreaFor(m => m.Disclosures, new { @class = "form-control", @id = "input" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Other comments", new { @class = "control-label h5" })
+                        @Html.TextAreaFor(m => m.Comments, new { @class = "form-control", @id = "input" })
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <div class="row col-md-offset-1">
+                    <div class="form-group">
+                        <h3>Provide a minimum of two contactable references.</h3>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Name", new { @class = "control-label h5" })
+                        @Html.TextBoxFor(m => m.SingleReference.Name, new { @class = "form-control", @id = "referenceInput1" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Current Position", new { @class = "control-label h5" })
+                        @Html.TextBoxFor(m => m.SingleReference.CurrentPosition, new { @class = "form-control", @id = "referenceInput2" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Contact Number/s", new { @class = "control-label h5" })
+                        @Html.TextBoxFor(m => m.SingleReference.ContactNumber, new { @class = "form-control", @id = "referenceInput3" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Email", new { @class = "control-label h5" })
+                        @Html.TextBoxFor(m => m.SingleReference.Email, new { @class = "form-control", @id = "referenceInput4" })
+
+                        <input id="referenceButton" onclick="" type="submit" class="btn btn-primary" value="Add Reference to List" name="ButtonName" style="margin-top:15px;" />
+                    </div>
+
+                    <div class="form-group">
+                        <table class="table table-bordered table-striped" style="width:40%;">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Current Position</th>
+                                    <th>Contact Number/s</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            @if (Model.ReferenceList != null)
+                {
+                    foreach (var item in Model.ReferenceList)
+                    {
+                                    <tr>
+                                        <td>@item.Name</td>
+                                        <td>@item.CurrentPosition</td>
+                                        <td>@item.ContactNumber</td>
+                                        <td>@item.Email</td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+                    </div>
+                </div>
+
+                <hr />
+
+
+                <div class="row col-md-offset-1">
+                    <div class="form-group">
+                        <input id="submitButton" type="submit" name="ButtonName" class="btn-lg btn-success" value="Save Profile" />
+                    </div>
+                </div>
+                }
+
+</body>

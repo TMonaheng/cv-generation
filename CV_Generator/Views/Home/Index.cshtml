@@ -1,0 +1,324 @@
+﻿
+
+@model CV_Generator.Models.CV_ViewModel
+
+@{
+    //Layout = null;
+    ViewBag.Title = "Generate CV";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@*@using (Html.BeginForm("GenerateCV", "CV_Generator", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))*@
+
+
+    <h3>Create a new Curriculum Vitae with the following format.</h3>
+    <hr />
+
+    <h3>Basic Information</h3>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.IDNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.IDNumber, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CountryOfBirth, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CountryOfBirth, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BEEStatus, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.BEEStatus, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Gender, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <hr />
+
+    <h3>Profile</h3>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProfileStatement, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.ProfileStatement, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <hr />
+
+    <h4>Key Strengths and Achievements</h4>
+    <h5>Strengths</h5>
+
+    
+   @using (Html.BeginForm("PopulateStrengthsList", "CV_Generator", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+   {
+
+   
+        @Html.Label("Strength: Add one at a time")
+        
+        @Html.TextBoxFor(m => m.SingleStrength.Description, new { @class = "form-control" })
+        <div>
+            <div>
+                <input type="submit" class="btn btn-default" value="Add to List" style="margin-top:15px;" />
+            </div>
+        </div>
+
+        <ul>
+
+            @if (Model.StrengthList != null)
+            {
+                foreach (var item in Model.StrengthList)
+                {
+
+                    <li>@item.Description</li>
+
+                }
+            }
+            
+
+        </ul>
+   }
+  
+
+
+    <h5 style="margin-top:30px;">Key Achievements</h5>
+    @Html.Label("Achievement: Add one at a time")
+    @Html.TextBoxFor(m => m.SingleStrength.Description, new { @class = "form-control" })
+    <div>
+        <div>
+            <input type="submit" class="btn btn-default" value="Add to List" style="margin-top:15px;"/>
+        </div>
+    </div>
+
+    <hr />
+
+    <h4>IT/Software and Other Skills Matrix</h4>
+    <h5 style="color:red">Please do not include old technologies no longer used</h5>
+
+    <div class="table-striped">
+        <table class="table-striped table-bordered" style="margin-bottom:20px; padding:10px;">
+            <tr>Proficiency Rating</tr>
+            <tr>
+                <td>4 = Highly skilled</td>
+                <td>Highly skilled ‘expert’ who can train others.</td>
+            </tr>
+            <tr>
+                <td>3 = Skilled</td>
+                <td>Competent with sound skills.  Does not need assistance.</td>
+            </tr>
+            <tr>
+                <td>2 = Partially skilled</td>
+                <td>Some gaps in skills and requires assistance.</td>
+            </tr>
+            <tr>
+                <td>1 = Not skilled</td>
+                <td>Skills gap and cannot perform work.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        @Html.Label("Technology/Tool/Method")
+        @Html.TextBoxFor(m => m.SingleSkill.SkillType, new { @class = "form-control" })
+
+        @Html.Label("Years of Experience")
+        @Html.TextBoxFor(m => m.SingleSkill.YearsOfExperience, new { @class = "form-control" })
+
+        @Html.Label("Last Year Used")
+        @Html.TextBoxFor(m => m.SingleSkill.LastYearUsed, new { @class = "form-control" })
+
+        @Html.Label("Proficiency rating")
+        @Html.TextBoxFor(m => m.SingleSkill.ProficiencyRating, new { @class = "form-control" })
+
+        <div>
+            <div>
+                <input type="submit" class="btn btn-default" value="Add to List" style="margin-top:15px;"/>
+            </div>
+        </div>
+
+    </div>
+
+    <hr />
+
+    <h4>Languages</h4>
+    <div>
+        @Html.Label("Language")
+        @Html.TextBoxFor(m => m.SingleLanguage.LanguageName, new { @class = "form-control" })
+
+        @Html.Label("Speak")
+        @Html.TextBoxFor(m => m.SingleLanguage.SpeakProficiency, new { @class = "form-control" })
+
+        @Html.Label("Read")
+        @Html.TextBoxFor(m => m.SingleLanguage.ReadProficiency, new { @class = "form-control" })
+
+        @Html.Label("Write")
+        @*@Html.DropDownListFor(m => m.SingleLanguage.WriteProficiency,new SelectListIte)*@
+
+        <div>
+            <div>
+                <input type="submit" class="btn btn-default" value="Add to List" style="margin-top:15px;" />
+            </div>
+        </div>
+
+    </div>
+
+    <hr />
+
+    <h4>Academic Qualifications and Courses Attended</h4>
+    <h5 style="color:red;">(Most recent first)</h5>
+    
+    <div>
+        @Html.Label("Qualification")
+        @Html.TextBoxFor(m => m.SingleQualification.QualificationName, new { @class = "form-control" })
+
+        @Html.Label("Institution")
+        @Html.TextBoxFor(m => m.SingleQualification.Institution, new { @class = "form-control" })
+
+        @Html.Label("Year Completed")
+        @Html.TextBoxFor(m => m.SingleQualification.YearCompleted, new { @class = "form-control" })
+
+        <div>
+            <div>
+                <input type="submit" class="btn btn-default" value="Add to List" style="margin-top:15px;" />
+            </div>
+        </div>
+
+    </div>
+
+    <hr />
+
+    <h4>Work Experience: Summary</h4>
+    <h5 style="color:red;">(Most recent first)</h5>
+
+    <div>
+        @Html.Label("Company")
+        @Html.TextBoxFor(m => m.SingleWorkExpSummary.Company, new { @class = "form-control" })
+
+        @Html.Label("Role")
+        @Html.TextBoxFor(m => m.SingleWorkExpSummary.Role, new { @class = "form-control" })
+
+        @Html.Label("Date: From")
+        @Html.TextBoxFor(m => m.SingleWorkExpSummary.StartDate, new { @class = "form-control" })
+
+        @Html.Label("Date: Until")
+        @Html.TextBoxFor(m => m.SingleWorkExpSummary.EndDate, new { @class = "form-control" })
+
+        @Html.Label("Permanent/Contract")
+        @Html.TextBoxFor(m => m.SingleWorkExpSummary.EmploymentType, new { @class = "form-control" })
+
+        <div>
+            <div>
+                <input type="submit" class="btn btn-default" value="Add to List" style="margin-top:15px;" />
+            </div>
+        </div>
+
+    </div>
+
+    <hr />
+
+    <h4>Work Experience: Detailed(Recent)</h4>
+    <h5 style="color:red;">(Last two places only - recent first)</h5>
+    
+    <div>
+        @Html.Label("Company")
+        @Html.TextBoxFor(m => m.SingleWorkExpDetailed.Company, new { @class = "form-control" })
+
+        @Html.Label("Role/Title")
+        @Html.TextBoxFor(m => m.SingleWorkExpDetailed.Role, new { @class = "form-control" })
+
+        @Html.Label("Date: From")
+        @Html.TextBoxFor(m => m.SingleWorkExpDetailed.StartDate, new { @class = "form-control" })
+
+        @Html.Label("Date: Until")
+        @Html.TextBoxFor(m => m.SingleWorkExpDetailed.EndDate, new { @class = "form-control" })
+
+        @Html.Label("Reason for Leaving")
+        @Html.TextBoxFor(m => m.SingleWorkExpDetailed.ReasonForLeaving, new { @class = "form-control" })
+
+        <h5>Responsibilities</h5>
+        @Html.TextBoxFor(m => m.SingleResponsibility.Description, new { @class = "form-control" })
+
+        <div>
+            <div>
+                <input type="submit" class="btn btn-default" value="Add Responsibility to List" style="margin-top:15px;" />
+            </div>
+        </div>
+
+    </div>
+   
+    <hr />
+
+    <h3 style="color:red;">Additional Information Required</h3>
+    
+    <h4>Preferred Employement Type</h4>
+
+    <div class="col-md-4">
+        <div class="col-sm-6">
+            @Html.Label("Permanent")
+            @Html.RadioButton("Permanent", "Permanent")
+        </div>
+        <div class="col-sm-6">
+            @Html.Label("Contract")
+            @Html.RadioButton("Contract", "Contract")
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="col-md-4">
+        <div class="col-sm-6">
+            <input type="submit" class="btn btn-default" value="Generate Optim CV" />
+        </div>
+        <div class="col-sm-6">
+            <input type="submit" class="btn btn-default" value="Generate Khonology CV" />
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Generate Optim CV" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Generate Khonology CV" />
+        </div>
+    </div>*@

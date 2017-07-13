@@ -1,0 +1,573 @@
+﻿@model CV_Generator.Models.CV_ViewModel
+
+
+
+@{
+    ViewBag.Title = "Optim";
+}
+
+<div style="padding-left:30pt;padding-right:30pt">
+
+
+    <p style="text-align: justify;"><strong></strong></p>
+    <p style="text-align: center;"><strong></strong></p>
+    <p style="text-align: center;"><strong>@Html.Label(Model.FirstName) @Html.Label(Model.LastName)</strong><strong></strong></p>
+    <p style="text-align: center;"><strong></strong></p>
+    <p style="text-align: center;">Country of Birth: @Html.Label(Model.CountryOfBirth)&nbsp; </p>
+    <p style="text-align: center;">&nbsp;BEE Status and Gender:&nbsp;</p>
+    <p style="text-align: center;">@Html.Label(Model.BEEStatus) / @Html.Label(Model.Gender)</p>
+    <p style="text-align: center;"><strong></strong></p>
+    <div style="text-align: center;">
+        <hr size="2" width="100%" align="center" />
+    </div>
+    <p style="text-align: justify;"><strong>Profile </strong><strong></strong></p>
+    <p style="text-align: justify;"><strong> @Html.Label(Model.ProfileStatement) </strong><strong></strong></p>
+    <div style="text-align: center;">
+        <hr size="2" width="100%" align="center" />
+    </div>
+    <p style="text-align: justify;"><strong></strong></p>
+    <p style="text-align: justify;"><strong>Key Skills and Achievements</strong><strong> </strong><strong></strong></p>
+
+    <p style="text-align: justify;"><strong>Skills</strong></p>
+
+    <ul>
+
+
+        @if (Model.StrengthList != null)
+            {
+                foreach (var item in Model.StrengthList)
+                {
+
+                <li style="margin-top:10px;">@item.Description</li>
+
+            }
+        }
+
+
+    </ul>
+
+
+    <p style="text-align: justify;"><strong>Key Achievements</strong></p>
+
+    <ul>
+
+
+        @if (Model.AchievementList != null)
+            {
+                foreach (var item in Model.AchievementList)
+                {
+
+                <li style="margin-top:10px;">@item.Description</li>
+
+            }
+        }
+
+
+    </ul>
+
+    <p style="margin-left: 18pt; text-align: justify; text-indent: -18pt;">&middot; </p>
+
+    <p><strong>IT/Software and Other Skills Matrix</strong></p>
+    <p><strong>Please do not include old technologies no longer used</strong><strong></strong></p>
+    <table border="1" cellspacing="0" cellpadding="0" width="468" style="width: 351.25pt; border-collapse: collapse; border: none;">
+        <tbody>
+            <tr>
+                <td colspan="2" style="width: 351.25pt; border: 1pt solid #a6a6a6; background: #d9d9d9; padding: 0cm 5.4pt;">
+                    <p>Proficiency Rating</p>
+                </td>
+            </tr>
+            <tr style="height: 11.35pt;">
+                <td style="width: 110.3pt; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-left: 1pt solid #a6a6a6; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 11.35pt;">
+                    <p>4 = Highly skilled</p>
+                </td>
+                <td style="width: 240.95pt; border-top: none; border-left: none; border-bottom: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; padding: 0cm 5.4pt; height: 11.35pt;">
+                    <p>Highly skilled &lsquo;expert&rsquo; who can train others.</p>
+                </td>
+            </tr>
+            <tr style="height: 11.35pt;">
+                <td style="width: 110.3pt; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-left: 1pt solid #a6a6a6; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 11.35pt;">
+                    <p>3 = Skilled</p>
+                </td>
+                <td style="width: 240.95pt; border-top: none; border-left: none; border-bottom: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; padding: 0cm 5.4pt; height: 11.35pt;">
+                    <p>Competent with sound skills.&nbsp; Does not need assistance.</p>
+                </td>
+            </tr>
+            <tr style="height: 11.35pt;">
+                <td style="width: 110.3pt; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-left: 1pt solid #a6a6a6; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 11.35pt;">
+                    <p>2 = Partially skilled</p>
+                </td>
+                <td style="width: 240.95pt; border-top: none; border-left: none; border-bottom: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; padding: 0cm 5.4pt; height: 11.35pt;">
+                    <p>Some gaps in skills and requires assistance.</p>
+                </td>
+            </tr>
+            <tr style="height: 11.35pt;">
+                <td style="width: 110.3pt; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-left: 1pt solid #a6a6a6; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 11.35pt;">
+                    <p>1 = Not skilled</p>
+                </td>
+                <td style="width: 240.95pt; border-top: none; border-left: none; border-bottom: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; padding: 0cm 5.4pt; height: 11.35pt;">
+                    <p>Skills gap and cannot perform work.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><strong></strong></p>
+    <table border="1" cellspacing="0" cellpadding="0" width="99%" style="margin-left: -0.25pt; border-collapse: collapse; border: none;">
+        <thead>
+            <tr style="height: 19.6pt;">
+                <td style="width: 56.66%; border-width: 1pt; border-style: solid; border-color: #a6a6a6 #a6a6a6 gray; border-image: initial; background: #d9d9d9; padding: 0cm 5.4pt; height: 19.6pt;">
+                    <p style="margin-left: 0cm; text-align: center;"><strong>Technology/Tool/Method</strong></p>
+                </td>
+                <td style="width: 15.32%; border-top: 1pt solid #a6a6a6; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid #a6a6a6; background: #d9d9d9; padding: 0cm 5.4pt; height: 19.6pt;">
+                    <p style="margin-left: 0cm; text-align: center;"><strong>Years of Experience</strong></p>
+                </td>
+                <td style="width: 13.78%; border-top: 1pt solid #a6a6a6; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid #a6a6a6; background: #d9d9d9; padding: 0cm 5.4pt; height: 19.6pt;">
+                    <p style="margin-left: 0cm; text-align: center;"><strong>Last Year Used</strong></p>
+                </td>
+                <td style="width: 14.24%; border-top: 1pt solid #a6a6a6; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid #a6a6a6; background: #d9d9d9; padding: 0cm 5.4pt; height: 19.6pt;">
+                    <p style="margin-left: 0cm; text-align: center;"><strong>Proficiency Rating</strong></p>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model.SkillList != null)
+            {
+                foreach (var item in Model.SkillList)
+                {
+                    <tr style="height: 14.15pt;">
+                        <td style="width: 56.66%; border-right: 1pt solid gray; border-bottom: 1pt solid gray; border-left: 1pt solid gray; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 14.15pt;"> @item.SkillType </td>
+                        <td style="width: 15.32%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; padding: 0cm 5.4pt; height: 14.15pt;"> @item.YearsOfExperience </td>
+                        <td style="width: 13.78%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; padding: 0cm 5.4pt; height: 14.15pt;"> @item.LastYearUsed </td>
+                        <td style="width: 14.24%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; padding: 0cm 5.4pt; height: 14.15pt;"> @item.ProficiencyRating </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <p style="text-align: justify;"><strong>Languages</strong><strong></strong></p>
+    <p style="text-align: justify;"><strong>(Excellent, Good or Fair)</strong><strong></strong></p>
+    <table border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: none;">
+        <tbody>
+            <tr style="height: 14.15pt;">
+                <td valign="top" style="width: 97.8pt; border: 1pt solid #a6a6a6; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p class="Normal1CxSpFirst"><strong>Language</strong></p>
+                </td>
+                <td style="width: 70.9pt; border-top: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p class="Normal1CxSpMiddle"><strong>Speak</strong></p>
+                </td>
+                <td style="width: 70.85pt; border-top: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p class="Normal1CxSpMiddle"><strong>Read</strong></p>
+                </td>
+                <td style="width: 70.9pt; border-top: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p class="Normal1CxSpLast"><strong>Write</strong></p>
+                </td>
+            </tr>
+
+            @if (Model.LanguageList != null)
+            {
+                foreach (var item in Model.LanguageList)
+                {
+                    <tr style="height: 14.15pt;">
+                        <td style="width: 97.8pt; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-left: 1pt solid #a6a6a6; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 14.15pt;">
+                            @item.LanguageName
+                        </td>
+                        <td style="width: 70.9pt; border-top: none; border-left: none; border-bottom: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; padding: 0cm 5.4pt; height: 14.15pt;"> @item.SpeakProficiency </td>
+                        <td style="width: 70.85pt; border-top: none; border-left: none; border-bottom: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; padding: 0cm 5.4pt; height: 14.15pt;"> @item.ReadProficiency </td>
+                        <td style="width: 70.9pt; border-top: none; border-left: none; border-bottom: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; padding: 0cm 5.4pt; height: 14.15pt;"> @item.WriteProficiency </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div style="text-align: center;">
+        <hr size="2" width="100%" align="center" />
+    </div>
+    <p style="text-align: justify;"><strong>Academic Qualifications</strong><strong> and Courses Attended</strong><strong></strong></p>
+    <p style="text-align: justify;"><strong>(Most recent first)</strong></p>
+
+    @if (Model.QualificationList != null)
+    {
+        foreach (var item in Model.QualificationList)
+        {
+            <p><strong>Qualification : @item.QualificationName</strong></p>
+            <p><strong>Institution : @item.Institution</strong></p>
+            <p><strong>Year completed : @item.YearCompleted</strong></p>
+        }
+    }
+
+    <div style="text-align: center;">
+        <hr size="2" width="100%" align="center" />
+    </div>
+    <p style="text-align: justify;"><strong>Work Experience Summary</strong><strong> </strong><strong></strong></p>
+    <p style="text-align: justify;"><strong>(Most recent first)</strong></p>
+    <table border="1" cellspacing="0" cellpadding="0" width="624" style="width: 467.8pt; margin-left: -0.25pt; border-collapse: collapse; border: none;">
+        <thead>
+            <tr style="height: 14.15pt;">
+                <td style="width: 156.2pt; border: 1pt solid #a6a6a6; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p style="text-align: center; line-height: 115%;"><strong>Company</strong></p>
+                </td>
+                <td style="width: 123.15pt; border-top: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p style="text-align: center; line-height: 115%;"><strong>Role</strong></p>
+                </td>
+                <td style="width: 124.65pt; border-top: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p style="text-align: center; line-height: 115%;"><strong>Dates</strong></p>
+                </td>
+                <td style="width: 63.8pt; border-top: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p style="text-align: center; line-height: 115%;"><strong>Permanent/</strong></p>
+                    <p style="text-align: center; line-height: 115%;"><strong>Contract</strong></p>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.WorkExperience_SummaryList != null)
+            {
+                foreach (var item in Model.WorkExperience_SummaryList)
+                {
+                    <tr style="height: 14.15pt;">
+                        <td style="width: 156.2pt; border-right: 1pt solid #a6a6a6; border-bottom: 1pt solid #a6a6a6; border-left: 1pt solid #a6a6a6; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 14.15pt;"> @item.Company </td>
+                        <td style="width: 123.15pt; border-top: none; border-left: none; border-bottom: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; padding: 0cm 5.4pt; height: 14.15pt;"> @item.Role </td>
+                        <td style="width: 124.65pt; border-top: none; border-left: none; border-bottom: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; padding: 0cm 5.4pt; height: 14.15pt;"> @item.StartDate until @item.EndDate </td>
+                        <td style="width: 63.8pt; border-top: none; border-left: none; border-bottom: 1pt solid #a6a6a6; border-right: 1pt solid #a6a6a6; padding: 0cm 5.4pt; height: 14.15pt;"> @item.EmploymentType </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div style="text-align: center;">
+        <hr size="2" width="100%" align="center" />
+    </div>
+    <p style="text-align: justify;"><strong>Work Experience Detailed Recent</strong></p>
+    <p style="text-align: justify;"><strong>(Last two and responsibilities summarised in bullet form - recent first)</strong></p>
+
+    @* Company 1 *@
+    <p><strong>Role/Title  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;@Html.Label(Model.CompanyOne.Role) </p>
+    <p><strong>Institution  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;@Html.Label(Model.CompanyOne.Company) </p>
+    <p><strong>Dates worked  </strong>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;@Html.Label(Model.CompanyOne.StartDate.ToString()) until @Html.Label(Model.CompanyOne.EndDate.ToString()) </p>
+    <p><strong>Reason for leaving  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;@Html.Label(Model.CompanyOne.ReasonForLeaving) </p>
+    <p><strong></strong></p>
+    <p style="text-align: justify;"><strong>Responsibilities</strong></p>
+    @if (Model.Comp1ResponsibilityList != null)
+    {
+        foreach (var item in Model.Comp1ResponsibilityList)
+        {
+            <p style="margin-left: 18pt; text-align: justify; text-indent: -18pt;">@item.Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        }
+    }
+    <div style="text-align: center;">
+        <hr size="2" width="100%" align="center" />
+    </div>
+
+    <p><strong>Role/Title</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;@Html.Label(Model.CompanyTwo.Role) </p>
+    <p><strong>Institution</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;@Html.Label(Model.CompanyTwo.Company) </p>
+    <p><strong>Dates worked</strong>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;@Html.Label(Model.CompanyTwo.StartDate.ToString()) until @Html.Label(Model.CompanyTwo.EndDate.ToString()) </p>
+    <p><strong>Reason for leaving </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;@Html.Label(Model.CompanyTwo.ReasonForLeaving) </p>
+    <p><strong></strong></p>
+    <p><strong>Responsibilities</strong></p>
+    @if (Model.Comp2ResponsibilityList != null)
+    {
+        foreach (var item in Model.Comp2ResponsibilityList)
+        {
+            <p style="margin-left: 18pt; text-align: justify; text-indent: -18pt;">@item.Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        }
+    }
+
+
+    <p style="text-align: justify;"><strong></strong></p>
+    <div style="text-align: center;">
+        <hr size="2" width="100%" align="center" />
+    </div>
+    <p style="text-align: justify;"><strong>Additional Information Required</strong><strong></strong></p>
+    <p style="text-align: justify;"><strong></strong></p>
+    <p style="text-align: justify;"><strong></strong></p>
+    <table border="1" cellspacing="0" cellpadding="0" style="margin-left: -0.25pt; border-collapse: collapse; border: none;">
+        <tbody>
+            <tr style="height: 14.15pt;">
+                <td style="width: 228.8pt; border: 1pt solid windowtext; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p><strong>Preferred role</strong></p>
+                </td>
+                <td style="width: 118.6pt; border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; padding: 0cm 5.4pt; height: 14.15pt;">
+                    @*<p><strong>@Html.Label(Model.EmploymentType)</strong></p>*@
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <table border="1" cellspacing="0" cellpadding="0" style="margin-left: -0.25pt; border-collapse: collapse; border: none;">
+        <tbody>
+            <tr style="height: 21.15pt;">
+                <td colspan="3" style="width: 466.35pt; border: 1pt solid windowtext; background: #d9d9d9; padding: 0cm 5.4pt; height: 21.15pt;">
+                    <p style="text-align: center;"><strong>PERMANENT </strong></p>
+                    <p style="text-align: center;"><strong>CURRENT SALARY (CTC - Cost to Company i.e. Before Deductions)</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 148.85pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Basic Salary</p>
+                </td>
+                <td style="width: 163pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Monthly&nbsp;&nbsp;&nbsp; &nbsp;<strong>R @Html.Label(Model.PermanentPosition.CurrentSalary.ToString())</strong></p>
+                </td>
+                <td style="width: 154.5pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Annual&nbsp;&nbsp;&nbsp;&nbsp; <strong>R @Html.Label(Model.PermanentPosition.CurrentSalary.ToString())</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 148.85pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Bonus/bonuses</p>
+                </td>
+                <td style="width: 163pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Monthly&nbsp;&nbsp;&nbsp; &nbsp;<strong>R @Html.Label(Model.PermanentPosition.CurrentBonus.ToString())</strong></p>
+                </td>
+                <td valign="top" style="width: 154.5pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Annual&nbsp;&nbsp;&nbsp;&nbsp; <strong>R @Html.Label(Model.PermanentPosition.CurrentBonus.ToString())</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 148.85pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Incentives</p>
+                </td>
+                <td style="width: 163pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Monthly&nbsp;&nbsp;&nbsp; &nbsp;<strong>R @Html.Label(Model.PermanentPosition.CurrentIncentives.ToString())</strong></p>
+                </td>
+                <td valign="top" style="width: 154.5pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Annual&nbsp;&nbsp;&nbsp;&nbsp; <strong>R @Html.Label(Model.PermanentPosition.CurrentIncentives.ToString())</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td colspan="3" style="width: 466.35pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p style="text-align: center;"><strong>PERMANENT </strong></p>
+                    <p style="text-align: center;"><strong>REQUIRED SALARY (CTC - Cost to Company i.e. Before Deductions)</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 148.85pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Basic Salary</p>
+                </td>
+                <td style="width: 163pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Monthly&nbsp;&nbsp;&nbsp; &nbsp;<strong>R @Html.Label(Model.PermanentPosition.RequiredSalary.ToString())</strong></p>
+                </td>
+                <td valign="top" style="width: 154.5pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Annual&nbsp;&nbsp;&nbsp;&nbsp; <strong>R @Html.Label(Model.PermanentPosition.RequiredSalary.ToString())</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 148.85pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Bonus/bonuses</p>
+                </td>
+                <td style="width: 163pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Monthly&nbsp;&nbsp;&nbsp; &nbsp;<strong>R @Html.Label(Model.PermanentPosition.RequiredBonus.ToString())</strong></p>
+                </td>
+                <td valign="top" style="width: 154.5pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Annual&nbsp;&nbsp;&nbsp;&nbsp; <strong>R @Html.Label(Model.PermanentPosition.RequiredBonus.ToString())</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 148.85pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Incentives</p>
+                </td>
+                <td style="width: 163pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Monthly&nbsp;&nbsp;&nbsp; &nbsp;<strong>R @Html.Label(Model.PermanentPosition.RequiredIncentives.ToString())</strong></p>
+                </td>
+                <td valign="top" style="width: 154.5pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Annual&nbsp;&nbsp;&nbsp;&nbsp; <strong>R @Html.Label(Model.PermanentPosition.RequiredIncentives.ToString())</strong></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <table border="1" cellspacing="0" cellpadding="0" style="margin-left: -0.25pt; border-collapse: collapse; border: none;">
+        <tbody>
+            <tr style="height: 14.15pt;">
+                <td colspan="3" style="width: 466.35pt; border: 1pt solid windowtext; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p style="text-align: center;"><strong>CONTRACT</strong></p>
+                    <p style="text-align: center;"><strong>CURRENT SALARY (CTC - Cost to Company i.e. Before Deductions)</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 28.8pt;">
+                <td style="width: 148.85pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 28.8pt;">
+                    <p>Hourly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>R @Html.Label(Model.ContractPosition.CurrentHourlyRate.ToString())</strong><strong></strong></p>
+                </td>
+                <td style="width: 163.9pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 28.8pt;">
+                    <p>Daily&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<strong>R @Html.Label(Model.ContractPosition.CurrentHourlyRate.ToString())</strong><strong></strong></p>
+                </td>
+                <td style="width: 153.6pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 28.8pt;">
+                    <p>Monthly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>R @Html.Label(Model.ContractPosition.CurrentHourlyRate.ToString())</strong><strong></strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td colspan="3" style="width: 466.35pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p style="text-align: center;"><strong>CONTRACT</strong></p>
+                    <p style="text-align: center;"><strong>REQUIRED SALARY (CTC - Cost to Company i.e. Before Deductions)</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 28.8pt;">
+                <td style="width: 148.85pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt; height: 28.8pt;">
+                    <p>Hourly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>R @Html.Label(Model.ContractPosition.RequiredHourlyRate.ToString())</strong><strong></strong></p>
+                </td>
+                <td style="width: 163.9pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 28.8pt;">
+                    <p>Daily&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<strong>R @Html.Label(Model.ContractPosition.RequiredHourlyRate.ToString())</strong><strong></strong></p>
+                </td>
+                <td style="width: 153.6pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 28.8pt;">
+                    <p>Monthly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>R @Html.Label(Model.ContractPosition.RequiredHourlyRate.ToString())</strong><strong></strong></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <table border="1" cellspacing="0" cellpadding="0" style="margin-left: -0.25pt; border-collapse: collapse; border: none;">
+        <tbody>
+            <tr style="height: 14.15pt;">
+                <td style="width: 228.8pt; border: 1pt solid windowtext; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>When will you be able to commence work?</p>
+                </td>
+                <td style="width: 237.55pt; border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p><strong>@Html.Label(Model.CommencementAvailability.ToString())</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 228.8pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Do you have any leave planned for this year?</p>
+                </td>
+                <td style="width: 237.55pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p><strong>@Html.Label(Model.LeavePlanned)</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 228.8pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>If yes, please provide dates</p>
+                </td>
+                <td style="width: 237.55pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p><strong>@Html.Label(Model.LeavePlannedDate.ToString())</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 228.8pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Country of Birth</p>
+                </td>
+                <td style="width: 237.55pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p><strong>@Html.Label(Model.CountryOfBirth)</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 228.8pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>ID No (If not SA &ndash; Passport &amp; Work Permit No)</p>
+                </td>
+                <td style="width: 237.55pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p><strong>@Html.Label(Model.IDNumber)</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 228.8pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Is there anything that you need to disclose e.g. share options/restraint of trade/restrictions etc</p>
+                </td>
+                <td style="width: 237.55pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p><strong>@Html.Label(Model.Disclosures)</strong></p>
+                </td>
+            </tr>
+            <tr style="height: 14.15pt;">
+                <td style="width: 228.8pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p>Other comments</p>
+                </td>
+                <td style="width: 237.55pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 14.15pt;">
+                    <p><strong>@Html.Label(Model.Comments)</strong></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Please provide a <strong>minimum</strong> of two contactable references and their contact details (mobile, landline &amp; email)</p>
+    <table border="1" cellspacing="0" cellpadding="0" width="631" style="width: 473.45pt; margin-left: -0.25pt; border-collapse: collapse; border: none;">
+        <tbody>
+            <tr>
+                <td style="width: 28.4pt; border: 1pt solid windowtext; background: #d9d9d9; padding: 0cm 5.4pt;">
+                    <p style="text-align: center;"><strong></strong></p>
+                </td>
+                <td style="width: 90.65pt; border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt;">
+                    <p style="text-align: center;"><strong>Name</strong></p>
+                </td>
+                <td style="width: 121.95pt; border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt;">
+                    <p style="text-align: center;"><strong>Current Position</strong></p>
+                </td>
+                <td style="width: 83.6pt; border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt;">
+                    <p style="text-align: center;"><strong>Contact Number/s</strong></p>
+                </td>
+                <td style="width: 148.85pt; border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt;">
+                    <p style="text-align: center;"><strong>Email</strong></p>
+                </td>
+            </tr>
+
+            @if (Model.ReferenceList != null)
+            {
+                foreach (var item in Model.ReferenceList)
+                {
+                    <tr>
+                        <td style="width: 28.4pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt;">
+                            <p>1</p>
+                        </td>
+                        <td style="width: 90.65pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> @item.Name </td>
+                        <td style="width: 121.95pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> @item.CurrentPosition </td>
+                        <td style="width: 83.6pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> @item.ContactNumber </td>
+                        <td style="width: 148.85pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> @item.Email </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+    <div style="margin-left: 0cm; text-align: center;">
+        <hr size="2" width="100%" align="center" />
+    </div>
+    <p style="margin-left: 0cm; text-align: center;">Office use only</p>
+    <p style="margin-left: 0cm; text-align: justify;"><strong>Applicant Interviewed</strong></p>
+    <table border="1" cellspacing="0" cellpadding="0" width="631" style="width: 473.45pt; margin-left: -0.25pt; border-collapse: collapse; border: none;">
+        <tbody>
+            <tr style="height: 25.5pt;">
+                <td style="width: 74.75pt; border: 1pt solid windowtext; background: #d9d9d9; padding: 0cm 5.4pt; height: 25.5pt;">
+                    <p style="text-align: center;"><strong>Date</strong></p>
+                </td>
+                <td style="width: 39.95pt; border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 25.5pt;">
+                    <p style="text-align: center;"><strong>Phone</strong></p>
+                </td>
+                <td style="width: 37.95pt; border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 25.5pt;">
+                    <p style="text-align: center;"><strong>Skype</strong></p>
+                </td>
+                <td style="width: 48.3pt; border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 25.5pt;">
+                    <p style="text-align: center;"><strong>In Person</strong></p>
+                </td>
+                <td style="width: 272.5pt; border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; background: #d9d9d9; padding: 0cm 5.4pt; height: 25.5pt;">
+                    <p style="text-align: center;"><strong>Additional information supplied (if applicable)</strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="width: 74.75pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt;">  </td>
+                <td valign="top" style="width: 39.95pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> &nbsp; </td>
+                <td valign="top" style="width: 37.95pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> &nbsp; </td>
+                <td valign="top" style="width: 48.3pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;">  &nbsp;</td>
+                <td valign="top" style="width: 272.5pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> &nbsp; </td>
+            </tr>
+            <tr>
+                <td valign="top" style="width: 74.75pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt;">  </td>
+                <td valign="top" style="width: 39.95pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> &nbsp; </td>
+                <td valign="top" style="width: 37.95pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> &nbsp; </td>
+                <td valign="top" style="width: 48.3pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;">  &nbsp;</td>
+                <td valign="top" style="width: 272.5pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> &nbsp; </td>
+            </tr>
+            <tr>
+                <td valign="top" style="width: 74.75pt; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-left: 1pt solid windowtext; border-image: initial; border-top: none; padding: 0cm 5.4pt;">  </td>
+                <td valign="top" style="width: 39.95pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> &nbsp; </td>
+                <td valign="top" style="width: 37.95pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> &nbsp; </td>
+                <td valign="top" style="width: 48.3pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;">  &nbsp;</td>
+                <td valign="top" style="width: 272.5pt; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt;"> &nbsp; </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+

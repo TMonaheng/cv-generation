@@ -1,0 +1,490 @@
+﻿@model CV_Generator.Models.CV_ViewModel
+
+@{
+    ViewBag.Title = "Candidate List";
+}
+
+@section Scripts {
+    
+<script type="text/javascript">
+
+    function hideOnLoad()
+    {
+        $('#reviewDiv').hide();
+        $('#approveDiv').hide();
+        $('#generalDiv').show();
+    }
+
+    $(document).ready(function () {
+        hideOnLoad();
+
+        $('#ActionDropDownList').change(function () {
+            var value = $(this).val();
+
+            if (value == "Review")
+            {
+                $('#reviewDiv').show();
+                $('#approveDiv').hide();
+                $('#generalDiv').hide();
+            }
+            else if(value == "Approve")
+            {
+                $('#reviewDiv').hide();
+                $('#approveDiv').show();
+                $('#generalDiv').hide();
+            }
+            else
+            {
+                $('#generalDiv').show();
+                $('#reviewDiv').hide();
+                $('#approveDiv').hide();
+            }
+        });
+
+    });
+
+</script>
+
+}
+
+<div>
+
+    <h1>Candidate List</h1>
+
+    <br />
+
+    @{
+        List<SelectListItem>
+        ActionSelector = new List<SelectListItem>();
+
+        ActionSelector.Add(new SelectListItem
+        {
+            Text = "View All",
+            Value = "View All"
+        });
+        ActionSelector.Add(new SelectListItem
+        {
+            Text = "Approve",
+            Value = "Approve"
+        });
+        ActionSelector.Add(new SelectListItem
+        {
+            Text = "Review",
+            Value = "Review"
+        });
+     }
+
+    <div>
+        @Html.DropDownListFor(m => m.action, ActionSelector, "Choose an action", new { @id="ActionDropDownList"})
+    </div>
+
+    <br />
+
+    <div id="reviewDiv">
+        @if(User.IsInRole("KhonoReviewer"))
+        {
+        <table style="margin: 100px; border-collapse: collapse; border: solid;">
+            <thead>
+                <tr style="height: 19.6pt;">
+                    <td style="width: 25%; border-width: 1pt; border: solid;  border-image: initial; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Name</strong></p>
+                    </td>
+                    <td style="width: 25%; border: solid ;  background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Surname</strong></p>
+                    </td>
+                    <td style="width: 15%; border: solid ; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>ID Number</strong></p>
+                    </td>
+                    <td style="width: 15%; height:30px; border: solid ; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Generate Khonology CV</strong></p>
+                    </td>
+                    <td style="width: 5%; height:30px;border: solid; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Review</strong></p>
+                    </td>
+                    <td style="width: 5%; height:30px;border: solid; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        @*<p style="margin-left: 0cm; text-align: center;"><strong>Review</strong></p>*@
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (Model.CandidateList != null)
+                {
+                    foreach (var item in Model.CandidateList)
+                    {
+                        using (Html.BeginForm("PopulateCV", "CandidateList", new { id = item.CandidateID }, FormMethod.Post, new { target = "_blank", @class = "form-horizontal", role = "form" }))
+                        {
+                            <tr style="height: 14.15pt;">
+                                <td style="width: 25%; border-right: 1pt solid gray; border-bottom: 1pt solid gray; border-left: 1pt solid gray; border-image: initial; border-top: none; height: 40px; padding-left:10px;"><strong> @item.FirstName</strong></td>
+                                <td style="width: 25%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; padding-left:10px;"><strong> @item.LastName</strong></td>
+                                <td style="width: 15%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; padding-left:10px;"><strong> @item.IDNumber</strong> </td>
+
+                                <td style="width: 15%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px;">
+
+                                    <input type="submit" name="ButtonName" class="btn btn-danger" value="Generate Khonology CV" style="height:30px; margin:5px;" />
+
+                                </td>
+
+                                <td style="width: 5%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; text-align:center; ">
+
+                                    @Html.CheckBoxFor(m => m.isReviewed)
+
+                                </td>
+
+                                <td style="width: 10%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px;">
+
+                                    <input type="submit" name="ButtonName" class="btn btn-success" value="Submit Review" style="height:30px; margin:5px;" />
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+
+
+
+        }
+        else if (User.IsInRole("OptimReviewer"))
+        {
+        <table style="margin: 100px; border-collapse: collapse; border: solid;">
+            <thead>
+                <tr style="height: 19.6pt;">
+                    <td style="width: 25%; border-width: 1pt; border: solid;  border-image: initial; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Name</strong></p>
+                    </td>
+                    <td style="width: 25%; border: solid ;  background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Surname</strong></p>
+                    </td>
+                    <td style="width: 15%; border: solid ; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>ID Number</strong></p>
+                    </td>
+                    <td style="width: 15%; height:30px; border: solid ; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Generate Optim CV</strong></p>
+                    </td>
+                    <td style="width: 5%; height:30px;border: solid; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Review</strong></p>
+                    </td>
+                    <td style="width: 5%; height:30px;border: solid; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        @*<p style="margin-left: 0cm; text-align: center;"><strong>Review</strong></p>*@
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (Model.CandidateList != null)
+                {
+                    foreach (var item in Model.CandidateList)
+                    {
+                        using (Html.BeginForm("PopulateCV", "CandidateList", new { id = item.CandidateID }, FormMethod.Post, new { target = "_blank", @class = "form-horizontal", role = "form" }))
+                        {
+                            <tr style="height: 14.15pt;">
+                                <td style="width: 25%; border-right: 1pt solid gray; border-bottom: 1pt solid gray; border-left: 1pt solid gray; border-image: initial; border-top: none; height: 40px; padding-left:10px;"><strong> @item.FirstName</strong></td>
+                                <td style="width: 25%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; padding-left:10px;"><strong> @item.LastName</strong></td>
+                                <td style="width: 15%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; padding-left:10px;"><strong> @item.IDNumber</strong> </td>
+
+                                <td style="width: 10%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px;">
+
+                                    <input type="submit" name="ButtonName" class="btn btn-primary" value="Generate Optim CV" style="height:30px; margin:5px;" />
+
+                                </td>
+
+                                <td style="width: 5%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; text-align:center; ">
+
+                                    @Html.CheckBoxFor(m => m.isReviewed)
+
+                                </td>
+
+                                <td style="width: 10%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px;">
+
+                                    <input type="submit" name="ButtonName" class="btn btn-success" value="Submit Review" style="height:30px; margin:5px;" />
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+        }
+        else
+        {
+            <h1>You're not authorized to review CVs</h1>
+        }
+        
+
+    </div>
+
+    <div id="approveDiv">
+        @if (User.IsInRole("KhonoApprover"))
+        {
+        <table style="margin: 100px; border-collapse: collapse; border: solid;">
+            <thead>
+                <tr style="height: 19.6pt;">
+                    <td style="width: 25%; border-width: 1pt; border: solid;  border-image: initial; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Name</strong></p>
+                    </td>
+                    <td style="width: 25%; border: solid ;  background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Surname</strong></p>
+                    </td>
+                    <td style="width: 15%; border: solid ; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>ID Number</strong></p>
+                    </td>
+                    <td style="width: 15%; height:30px; border: solid ; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Generate Khonology CV</strong></p>
+                    </td>
+                    <td style="width: 5%; height:30px;border: solid; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Approve</strong></p>
+                    </td>
+                    <td style="width: 5%; height:30px;border: solid; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                       @* <p style="margin-left: 0cm; text-align: center;"><strong>Approve</strong></p>*@
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (Model.CandidateList != null)
+                {
+                    foreach (var item in Model.CandidateList)
+                    {
+                        using (Html.BeginForm("PopulateCV", "CandidateList", new { id = item.CandidateID }, FormMethod.Post, new { target = "_blank", @class = "form-horizontal", role = "form" }))
+                        {
+                            <tr style="height: 14.15pt;">
+                                <td style="width: 25%; border-right: 1pt solid gray; border-bottom: 1pt solid gray; border-left: 1pt solid gray; border-image: initial; border-top: none; height: 40px; padding-left:10px;"><strong> @item.FirstName</strong></td>
+                                <td style="width: 25%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; padding-left:10px;"><strong> @item.LastName</strong></td>
+                                <td style="width: 15%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; padding-left:10px;"><strong> @item.IDNumber</strong> </td>
+
+                                <td style="width: 15%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px;">
+
+                                    <input type="submit" name="ButtonName" class="btn btn-danger" value="Generate Khonology CV" style="height:30px; margin:5px;" />
+
+                                </td>
+
+                                <td style="width: 5%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; text-align:center;">
+                                    @if (item.isReviewed == true)
+                                    {
+                                        @Html.CheckBoxFor(m => m.isApproved)
+                                    }
+                                    else
+                                    {
+                                        @Html.CheckBoxFor(m => m.isApproved, new { @disabled="disabled" })
+                                    }
+                                    
+
+                                </td>
+
+                                <td style="width: 10%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px;">
+                                    @if (item.isReviewed == true)
+                                    {
+                                        <input type="submit" name="ButtonName" class="btn btn-success" value="Submit Approval" style="height:30px; margin:5px;" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" name="ButtonName" class="btn btn-default" value="Awaiting Review" style="height:30px; margin:5px;" disabled="disabled"/>
+                                    }
+                                    
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+        }
+        else if (User.IsInRole("OptimApprover"))
+        {
+        <table style="margin: 100px; border-collapse: collapse; border: solid;">
+            <thead>
+                <tr style="height: 19.6pt;">
+                    <td style="width: 25%; border-width: 1pt; border: solid;  border-image: initial; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Name</strong></p>
+                    </td>
+                    <td style="width: 25%; border: solid ;  background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Surname</strong></p>
+                    </td>
+                    <td style="width: 15%; border: solid ; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>ID Number</strong></p>
+                    </td>
+                    <td style="width: 15%; height:30px; border: solid ; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Generate Optim CV</strong></p>
+                    </td>
+                    <td style="width: 5%; height:30px;border: solid; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Approve</strong></p>
+                    </td>
+                    <td style="width: 5%; height:30px;border: solid; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        @*<p style="margin-left: 0cm; text-align: center;"><strong>Approve</strong></p>*@
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (Model.CandidateList != null)
+                {
+                    foreach (var item in Model.CandidateList)
+                    {
+                        using (Html.BeginForm("PopulateCV", "CandidateList", new { id = item.CandidateID }, FormMethod.Post, new { target = "_blank", @class = "form-horizontal", role = "form" }))
+                        {
+                            <tr style="height: 14.15pt;">
+                                <td style="width: 25%; border-right: 1pt solid gray; border-bottom: 1pt solid gray; border-left: 1pt solid gray; border-image: initial; border-top: none; height: 40px; padding-left:10px;"><strong> @item.FirstName</strong></td>
+                                <td style="width: 25%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; padding-left:10px;"><strong> @item.LastName</strong></td>
+                                <td style="width: 15%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; padding-left:10px;"><strong> @item.IDNumber</strong> </td>
+
+                                <td style="width: 10%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px;">
+
+                                    <input type="submit" name="ButtonName" class="btn btn-primary" value="Generate Optim CV" style="height:30px; margin:5px;" />
+
+                                </td>
+
+                                <td style="width: 5%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; text-align:center;">
+                                    @if(item.isReviewed == true)
+                                    {
+                                        @Html.CheckBoxFor(m => m.isApproved)
+                                    }
+                                    else
+                                    {
+                                        @Html.CheckBoxFor(m => m.isApproved, new { @disabled="disabled"})
+                                    }
+                                    
+
+                                </td>
+
+                                <td style="width: 10%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px;">
+                                    @if (item.isReviewed == true)
+                                    {
+                                        <input type="submit" name="ButtonName" class="btn btn-success" value="Submit Approval" style="height:30px; margin:5px;" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" name="ButtonName" class="btn btn-default" value="Awaiting Review" style="height:30px; margin:5px;" disabled="disabled"/>
+                                    }
+                                    
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+        }
+        else
+        {
+            <h1>You're not authorized to approve CVs</h1>
+        }
+    </div>
+
+    <div id="generalDiv">
+        <table style="margin: 100px; border-collapse: collapse; border: solid;">
+            <thead>
+                <tr style="height: 19.6pt;">
+                    <td style="width: 25%; border-width: 1pt; border: solid;  border-image: initial; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Name</strong></p>
+                    </td>
+                    <td style="width: 25%; border: solid ;  background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Surname</strong></p>
+                    </td>
+                    <td style="width: 15%; border: solid ; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>ID Number</strong></p>
+                    </td>
+                    <td style="width: 15%; height:30px; border: solid ; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Generate Khonology CV</strong></p>
+                    </td>
+                    <td style="width: 10%; height:30px;border: solid; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Generate Optim CV</strong></p>
+                    </td>
+                    <td style="width: 5%; height:30px;border: solid; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Reviewed</strong></p>
+                    </td>
+                    <td style="width: 5%; height:30px;border: solid; background: #d9d9d9; padding: 0cm 5.4pt; height: 30px;">
+                        <p style="margin-left: 0cm; text-align: center;"><strong>Approved</strong></p>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (Model.CandidateList != null)
+                {
+                    foreach (var item in Model.CandidateList)
+                    {
+                        using (Html.BeginForm("PopulateCV", "CandidateList", new { id = item.CandidateID }, FormMethod.Post, new { target = "_blank", @class = "form-horizontal", role = "form" }))
+                        {
+                            <tr style="height: 14.15pt;">
+                                <td style="width: 25%; border-right: 1pt solid gray; border-bottom: 1pt solid gray; border-left: 1pt solid gray; border-image: initial; border-top: none; height: 40px; padding-left:10px;"><strong> @item.FirstName</strong></td>
+                                <td style="width: 25%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; padding-left:10px;"><strong> @item.LastName</strong></td>
+                                <td style="width: 15%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; padding-left:10px;"><strong> @item.IDNumber</strong> </td>
+
+                                <td style="width: 15%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px;">
+
+                                    <input type="submit" name="ButtonName" class="btn btn-danger" value="Generate Khonology CV" style="height:30px; margin:5px;" />
+
+                                    @*@Html.ActionLink("CandidateList","PrintKhonology")*@
+                                </td>
+
+
+                                <td style="width: 10%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px;">
+
+                                    <input type="submit" name="ButtonName" class="btn btn-primary" value="Generate Optim CV" style="height:30px; margin:5px;" />
+
+                                </td>
+
+
+
+                                <td style="width: 5%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; text-align:center; ">
+
+                                    @*@Html.CheckBoxFor(m => m.isReviewed, new { @disabled = "disabled", @checked = "checked" })*@
+                                    @if (item.isReviewed == true)
+                                    {
+                                        <input type="checkbox" name="reviewed" value="Reviewed" checked="checked" disabled="disabled">
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" name="reviewed" value="Reviewed" disabled="disabled">
+                                    }
+
+                                </td>
+                                <td style="width: 5%; border-top: none; border-left: none; border-bottom: 1pt solid gray; border-right: 1pt solid gray; height: 40px; text-align:center;">
+
+                                   
+                                    @if (item.isApproved == true)
+                                    {
+                                        <input type="checkbox" name="approved" value="Approved" checked="checked" disabled="disabled">
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" name="approved" value="Approved" disabled="disabled">
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @*@if(Model.action == "Review")
+    {
+
+    }
+    else if (Model.action == "Approve")
+    {
+
+    }
+    else
+    {
+
+    }*@
+
+
+</div>
