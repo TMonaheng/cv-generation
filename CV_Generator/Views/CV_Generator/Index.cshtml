@@ -557,10 +557,10 @@
                 {
                     Text = "4",
                     Value = "4"
-                );
+                });
             }
 
-            <div class="form-group">
+            @*<div class="form-group">*@
                 @Html.Label("Proficiency rating", new { @class = "control-label h5" })
                 @Html.DropDownListFor(m => m.SingleSkill.ProficiencyRating, ProficiencyRatings, "-- Select --", new { @id = "skillInput4", @class = "form-control" })
 
